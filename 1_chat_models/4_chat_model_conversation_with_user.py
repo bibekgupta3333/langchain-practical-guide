@@ -5,7 +5,7 @@ from langchain.schema import AIMessage, HumanMessage, SystemMessage
 # Load environment variables from .env
 load_dotenv()
 
-# Create a ChatOpenAI model
+# Create a ChatGoogleGenerativeAI model
 model = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 
 

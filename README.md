@@ -46,8 +46,8 @@ graph TD
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/bibekgupta3333/ai-crash-course
-   cd ai-crash-course
+   git clone https://github.com/bibekgupta3333/langchain-practical-guide
+   cd langchain-practical-guide
    ```
 
 2. Install dependencies using Poetry:
@@ -89,6 +89,7 @@ graph LR
     A --> D[Alternative Models]
     A --> E[User Interaction]
     A --> F[Message History Storage]
+    A --> G[Advanced Usage]
 ```
 
 - `1_chat_model_basic.py`: Introduction to calling LLMs
@@ -96,6 +97,11 @@ graph LR
 - `3_chat_model_alternatives.py`: Exploring different providers (OpenAI, Anthropic, Google)
 - `4_chat_model_conversation_with_user.py`: Interactive chat applications
 - `5_chat_model_save_message_history_firestore.py`: Persisting conversations to databases
+- `advance/`:
+  - `6_chat_model_streaming.py`: Implementing streaming responses for real-time interactions
+  - `7_chat_model_parameters.py`: Exploring model parameters to control response generation
+  - `8_chat_model_multimodal.py`: Working with multimodal models that can process text and images
+  - `9_chat_model_error_handling.py`: Implementing robust error handling in LLM applications
 
 Learn how to interact with models like ChatGPT, Claude, and Gemini through a unified interface.
 

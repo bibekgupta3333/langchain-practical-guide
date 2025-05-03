@@ -245,3 +245,17 @@ A: Check out the [official LangChain documentation](https://python.langchain.com
 ## License
 
 This project is licensed under the MIT License.
+
+## References
+
+<details>
+<summary>Click to view references</summary>
+
+- [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction) - Official documentation
+- [LangChain GitHub Repository](https://github.com/langchain-ai/langchain) - Source code and examples
+- [OpenAI API Documentation](https://platform.openai.com/docs/api-reference) - API reference for OpenAI models
+- [Anthropic API Documentation](https://docs.anthropic.com/claude/reference) - API reference for Claude models
+- [Google AI Documentation](https://ai.google.dev/docs) - Documentation for Google AI services
+- [Brandon Hancock's GitHub](https://github.com/bhancockio) - Gen AI course creator
+
+</details>

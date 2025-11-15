@@ -48,7 +48,7 @@ tools = [
 prompt = hub.pull("hwchase17/structured-chat-agent")
 
 # Initialize a ChatGoogleGenerativeAI model
-llm = ChatOllama(model="gpt-oss:20b")
+llm = ChatOllama(model="qwen3:0.6b")
 
 # Create a structured Chat Agent with Conversation Buffer Memory
 # ConversationBufferMemory stores the conversation history, allowing the agent to maintain context across interactions

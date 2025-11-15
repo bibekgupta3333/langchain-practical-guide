@@ -47,7 +47,7 @@ def create_vector_store(docs, embeddings, store_name):
 # Useful for general-purpose embeddings with high accuracy.
 print("\n--- Using Google GenerativeAI Embeddings ---")
 google_generative_ai_embeddings = OllamaEmbeddings(
-    model="embeddinggemma"
+    model="qwen3-embedding:0.6b"
 )
 create_vector_store(
     docs, google_generative_ai_embeddings, "chroma_db_google_generative_ai"

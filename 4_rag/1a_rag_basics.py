@@ -40,7 +40,7 @@ if not os.path.exists(persistent_directory):
     # Create embeddings
     print("\n--- Creating embeddings ---")
     embeddings = OllamaEmbeddings(
-        model="embeddinggemma"
+        model="qwen3-embedding:0.6b"
     )  # Update to a valid embedding model if needed
     print("\n--- Finished creating embeddings ---")
 

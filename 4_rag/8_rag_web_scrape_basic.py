@@ -34,7 +34,7 @@ print(f"Sample chunk:\n{docs[0].page_content}\n")
 
 # Step 3: Create embeddings for the document chunks
 # OpenAIEmbeddings turns text into numerical vectors that capture semantic meaning
-embeddings = OllamaEmbeddings(model="embeddinggemma")
+embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 
 # Step 4: Create and persist the vector store with the embeddings
 # Chroma stores the embeddings for efficient searching

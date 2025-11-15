@@ -200,6 +200,50 @@ All dependencies have been updated to their latest compatible versions:
 - Note: `langchain-google-firestore` is incompatible with LangChain 1.0+
 - Alternative: Use other memory providers or wait for an updated version
 
+### Files Updated in This Migration
+
+All example files have been updated with the new import paths and Ollama integration:
+
+**Chat Models (1_chat_models/):**
+- `1_chat_model_basic.py` - Updated to use Ollama
+- `2_chat_model_basic_conversation.py` - Fixed import paths
+- `4_chat_model_conversation_with_user.py` - Updated to `langchain_core.messages`
+
+**Prompt Templates (2_prompt_templates/):**
+- `2_prompt_template_with_chat_model.py` - Updated to `langchain_core.prompts` and Ollama
+
+**Chains (3_chains/):**
+- `1_chains_basics.py` - Updated to Ollama
+- `2_chains_under_the_hood.py` - Updated to Ollama
+- `3_chains_extended.py` - Fixed `langchain_core.runnables` imports
+- `4_chains_parallel.py` - Updated to Ollama
+- `5_chains_branching.py` - Updated to Ollama
+
+**RAG (4_rag/):**
+- `1a_rag_basics.py` - Updated to `langchain_text_splitters` and `OllamaEmbeddings`
+- `1b_rag_basics.py` - Updated embeddings to Ollama
+- `2a_rag_basics_metadata.py` - Updated to Ollama embeddings
+- `2b_rag_basics_metadata.py` - Updated to Ollama embeddings
+- `3_rag_text_splitting_deep_dive.py` - Fixed text splitter imports
+- `4_rag_embedding_deep_dive.py` - Updated embeddings
+- `5_rag_retriever_deep_dive.py` - Updated retriever imports
+- `6_rag_one_off_question.py` - Updated to `langchain_classic.chains`
+- `7_rag_conversational.py` - Fixed chain imports to `langchain_classic`
+- `8_rag_web_scrape_basic.py` - Updated embeddings
+- `8_rag_web_scrape_firecrawl.py` - Updated to Ollama
+
+**Agents & Tools (5_agents_and_tools/):**
+- `1_agent_and_tools_basics.py` - Updated to `langchain_classic.agents`
+- `agent_deep_dive/1_agent_react_chat.py` - Fixed agent imports
+- `agent_deep_dive/2_agent_react_docstore.py` - Updated to `langchain_classic`
+- `tools_deep_dive/1_tool_constructor.py` - Fixed pydantic imports
+- `tools_deep_dive/3_tool_base_tool.py` - Updated tool imports
+
+**Configuration:**
+- `.env.example` - Added Ollama configuration options
+- `pyproject.toml` - Updated to LangChain 1.0+ dependencies
+- `poetry.lock` - Regenerated with new dependency versions
+
 ## Repository Structure
 
 Here's a breakdown of the folders and what you'll find in each:

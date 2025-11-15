@@ -9,7 +9,7 @@ persistent_directory = os.path.join(current_dir, "db", "chroma_db")
 
 # Define the embedding model
 embeddings = OllamaEmbeddings(
-        model="embeddinggemma"
+        model="qwen3-embedding:0.6b"
     )
 
 # Load the existing vector store with the embedding function
@@ -21,7 +21,7 @@ query = "Who is Odysseus' wife?"
 # Retrieve relevant documents based on the query
 retriever = db.as_retriever(
     search_type="similarity_score_threshold",
-    search_kwargs={"k": 10, "score_threshold": 0.9},
+    search_kwargs={"k": 10, "score_threshold": 0.3},
 )
 relevant_docs = retriever.invoke(query)
 

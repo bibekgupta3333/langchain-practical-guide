@@ -73,7 +73,7 @@ tools = [
 ]
 
 # Initialize a ChatGoogleGenerativeAI model
-llm = ChatOllama(model="gpt-oss:20b")
+llm = ChatOllama(model="qwen3:0.6b")
 
 # Pull the prompt template from the hub
 prompt = hub.pull("hwchase17/openai-tools-agent")

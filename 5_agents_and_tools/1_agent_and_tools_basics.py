@@ -36,7 +36,7 @@ tools = [
 prompt = hub.pull("hwchase17/react")
 
 # Initialize a ChatGoogleGenerativeAI model
-llm = ChatOllama(model="gpt-oss:20b", temperature=0)
+llm = ChatOllama(model="qwen3:0.6b", temperature=0)
 
 # Create the ReAct agent using the create_react_agent function
 agent = create_react_agent(

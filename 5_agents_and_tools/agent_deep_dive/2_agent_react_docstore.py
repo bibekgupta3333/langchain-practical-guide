@@ -9,7 +9,7 @@ from langchain_chroma import Chroma
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.tools import Tool
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_ollama import ChatOllama, OllamaEmbeddings
 
 # Load environment variables from .env file
 load_dotenv()
@@ -29,7 +29,7 @@ else:
     )
 
 # Define the embedding model
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 
 # Load the existing vector store with the embedding function
 db = Chroma(persist_directory=persistent_directory, embedding_function=embeddings)
@@ -43,7 +43,7 @@ retriever = db.as_retriever(
 )
 
 # Create a ChatGoogleGenerativeAI model
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+llm = ChatOllama(model="qwen3:0.6b")
 
 # Contextualize question prompt
 # This system prompt helps the AI understand that it should reformulate the question

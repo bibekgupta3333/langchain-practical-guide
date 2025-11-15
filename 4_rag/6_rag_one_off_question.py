@@ -13,7 +13,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 persistent_directory = os.path.join(current_dir, "db", "chroma_db_with_metadata")
 
 # Define the embedding model
-embeddings = OllamaEmbeddings(model="embeddinggemma")
+embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 
 # Load the existing vector store with the embedding function
 db = Chroma(persist_directory=persistent_directory, embedding_function=embeddings)
@@ -45,7 +45,7 @@ combined_input = (
 )
 
 # Create a ChatGoogleGenerativeAI model
-model = ChatOllama(model="gpt-oss:20b")
+model = ChatOllama(model="qwen3:0.6b")
 
 # Define the messages for the model
 messages = [

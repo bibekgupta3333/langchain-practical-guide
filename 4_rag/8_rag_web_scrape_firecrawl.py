@@ -44,7 +44,7 @@ def create_vector_store():
     print(f"Sample chunk:\n{split_docs[0].page_content}\n")
 
     # Step 3: Create embeddings for the document chunks
-    embeddings = OllamaEmbeddings(model="embeddinggemma")
+    embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 
     # Step 4: Create and persist the vector store with the embeddings
     print(f"\n--- Creating vector store in {persistent_directory} ---")
@@ -61,7 +61,7 @@ else:
     print(f"Vector store {persistent_directory} already exists. No need to initialize.")
 
 # Load the vector store with the embeddings
-embeddings = OllamaEmbeddings(model="embeddinggemma")
+embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 db = Chroma(persist_directory=persistent_directory, embedding_function=embeddings)
 
 

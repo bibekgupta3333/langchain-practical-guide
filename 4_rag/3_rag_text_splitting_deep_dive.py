@@ -28,7 +28,7 @@ documents = loader.load()
 
 # Define the embedding model
 embeddings = OllamaEmbeddings(
-    model="embeddinggemma"
+    model="qwen3-embedding:0.6b"
 )  # Update to a valid embedding model if needed
 
 

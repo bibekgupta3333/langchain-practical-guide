@@ -6,7 +6,7 @@ from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 load_dotenv()
 
 # Create a ChatGoogleGenerativeAI model
-model = ChatOllama(model="gpt-oss:20b")
+model = ChatOllama(model="qwen3:0.6b")
 
 
 chat_history = []  # Use a list to store messages

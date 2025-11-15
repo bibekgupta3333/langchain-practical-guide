@@ -6,7 +6,7 @@ from langchain_ollama import ChatOllama
 load_dotenv()
 
 # Create a ChatGoogleGenerativeAI model
-model = ChatOllama(model="gpt-oss:20b")
+model = ChatOllama(model="qwen3:0.6b")
 
 # PART 1: Create a ChatPromptTemplate using a template string
 print("-----Prompt from Template-----")

@@ -9,7 +9,7 @@ db_dir = os.path.join(current_dir, "db")
 persistent_directory = os.path.join(db_dir, "chroma_db_with_metadata")
 
 # Define the embedding model
-embeddings = OllamaEmbeddings(model="embeddinggemma")
+embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 
 # Load the existing vector store with the embedding function
 db = Chroma(persist_directory=persistent_directory, embedding_function=embeddings)

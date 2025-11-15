@@ -1,12 +1,12 @@
 from dotenv import load_dotenv
-from langchain.prompts import ChatPromptTemplate
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama import ChatOllama
 
 # Load environment variables from .env
 load_dotenv()
 
 # Create a ChatGoogleGenerativeAI model
-model = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+model = ChatOllama(model="gpt-oss:20b")
 
 # PART 1: Create a ChatPromptTemplate using a template string
 print("-----Prompt from Template-----")

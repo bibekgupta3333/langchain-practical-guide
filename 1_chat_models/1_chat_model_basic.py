@@ -2,13 +2,13 @@
 # OpenAI Chat Model Documents: https://python.langchain.com/docs/integrations/chat/google_generative_ai/
 
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_ollama import ChatOllama
 
 # Load environment variables from .env
 load_dotenv()
 
 # Create a ChatGoogleGenerativeAI model
-model = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+model = ChatOllama(model="gpt-oss:20b")
 
 # Invoke the model with a message
 result = model.invoke("What is 81 divided by 9?")

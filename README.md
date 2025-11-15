@@ -19,7 +19,8 @@ graph TD
     B --> B1[OpenAI]
     B --> B2[Anthropic]
     B --> B3[Google]
-    B --> B4[Other LLMs]
+    B --> B4[Ollama/Local]
+    B --> B5[Hugging Face]
 
     E --> G
     E --> H
@@ -38,8 +39,9 @@ graph TD
 
 ### Prerequisites
 
-- Python 3.11
+- Python 3.11, 3.12, or 3.13
 - Poetry (Follow this [Poetry installation tutorial](https://python-poetry.org/docs/#installation) to install Poetry on your system)
+- (Optional) Ollama for local LLM inference ([Download Ollama](https://ollama.ai/))
 
 ### Installation
 
@@ -53,8 +55,10 @@ graph TD
 2. Install dependencies using Poetry:
 
    ```bash
-   poetry install --no-root
+   poetry install
    ```
+   
+   Note: With Poetry 2.0+, the `package-mode = false` setting in `pyproject.toml` means `--no-root` is no longer needed.
 
 3. Set up your environment variables:
 
@@ -64,10 +68,21 @@ graph TD
    mv .env.example .env
    ```
 
-4. Activate the Poetry shell to run the examples:
+4. Activate the Poetry virtual environment:
 
+   **Poetry 2.0+ (Recommended):**
    ```bash
-   poetry shell
+   poetry env activate
+   ```
+   
+   **Or manually activate:**
+   ```bash
+   source $(poetry env info --path)/bin/activate
+   ```
+   
+   **Or run directly without activating:**
+   ```bash
+   poetry run python 1_chat_models/1_chat_model_basic.py
    ```
 
 5. Run the code examples:
@@ -75,6 +90,115 @@ graph TD
    ```bash
     python 1_chat_models/1_chat_model_basic.py
    ```
+
+### Optional: Setting up Ollama for Local LLMs
+
+If you want to use local LLMs (free, private, offline):
+
+1. Install Ollama from [ollama.ai](https://ollama.ai/)
+
+2. Pull a model:
+   ```bash
+   # For chat models
+   ollama pull llama3.2
+   ollama pull mistral
+   ollama pull gemma2
+   
+   # For embeddings
+   ollama pull nomic-embed-text
+   ```
+
+3. Verify Ollama is running:
+   ```bash
+   ollama list
+   ```
+
+4. Use in your code:
+   ```python
+   from langchain_ollama import ChatOllama
+   
+   model = ChatOllama(model="llama3.2")
+   ```
+
+## 🆕 Recent Updates - LangChain 1.0 Migration
+
+This repository has been updated to **LangChain 1.0+** with several important changes:
+
+### Major Updates
+
+- **LangChain 1.0+**: Upgraded from 0.3.x to 1.0.x with updated import paths
+- **Ollama Support**: Added support for local LLM inference using Ollama
+- **LangGraph**: Integrated for building stateful, multi-actor applications
+- **LangSmith**: Added for observability and debugging
+- **Python 3.13**: Extended Python version support (3.11-3.13)
+
+### Breaking Changes & Import Updates
+
+If you're upgrading from an older version, note these import path changes:
+
+```python
+# OLD (LangChain 0.3.x)
+from langchain.schema import AIMessage, HumanMessage
+from langchain.prompts import ChatPromptTemplate
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.schema.runnable import RunnableLambda
+from langchain.pydantic_v1 import BaseModel
+
+# NEW (LangChain 1.0+)
+from langchain_core.messages import AIMessage, HumanMessage
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_text_splitters import CharacterTextSplitter
+from langchain_core.runnables import RunnableLambda
+from pydantic import BaseModel
+
+# Chain utilities moved to langchain_classic
+from langchain_classic.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain_classic.chains.combine_documents import create_stuff_documents_chain
+```
+
+### New Models Supported
+
+- **Ollama**: Local LLM inference (ChatOllama, OllamaEmbeddings)
+- **LangChain Ollama**: Official LangChain integration for Ollama
+- **Hugging Face**: Enhanced integration via langchain-huggingface
+
+### Removed Dependencies
+
+- **langchain-google-firestore**: Removed due to incompatibility with LangChain 1.0+
+  - The example file `5_chat_model_save_message_history_firebase.py` may need updates
+
+### Updated Dependencies
+
+All dependencies have been updated to their latest compatible versions:
+- `langchain`: 1.0.7
+- `langchain-core`: 1.0.5
+- `langchain-community`: 0.4.1
+- `langchain-openai`: 1.0.3
+- `langchain-anthropic`: 1.0.4
+- `langchain-google-genai`: 3.0.3
+- `langgraph`: 1.0.3
+- `langsmith`: 0.4.43
+- `langchain-ollama`: 1.0.0
+- `langchain-huggingface`: 1.0.1
+
+### Troubleshooting Common Migration Issues
+
+**Import Error: "cannot import X from langchain.Y"**
+- Solution: Check the import path changes above. Most imports moved to `langchain_core.*`
+
+**"Module langchain.pydantic_v1 not found"**
+- Solution: Use `from pydantic import BaseModel, Field` instead
+
+**"Module langchain.schema not found"**
+- Solution: Use `from langchain_core.messages import *` instead
+
+**Poetry install fails with dependency conflicts**
+- Solution: Delete `poetry.lock` and run `poetry install` again
+- Or use `poetry update` to update all dependencies
+
+**Examples using Google Firestore don't work**
+- Note: `langchain-google-firestore` is incompatible with LangChain 1.0+
+- Alternative: Use other memory providers or wait for an updated version
 
 ## Repository Structure
 
@@ -231,7 +355,13 @@ A: LangChain is a framework designed to simplify the process of building applica
 A: Follow the instructions in the "Getting Started" section above. Ensure you have Python 3.11 installed, install Poetry, clone the repository, install dependencies, rename the `.env.example` file to `.env`, and activate the Poetry shell.
 
 **Q: Which LLM provider should I use?**  
-A: The examples work with multiple providers (OpenAI, Anthropic, Google). Choose based on your needs for cost, capabilities, and data privacy requirements.
+A: The examples work with multiple providers:
+- **OpenAI** (GPT-4, GPT-3.5): Best for general-purpose tasks
+- **Anthropic** (Claude): Excellent for reasoning and analysis
+- **Google** (Gemini): Strong multimodal capabilities
+- **Ollama** (Local): Free, private, offline-capable (recommended: llama3, mistral, gemma2)
+
+Choose based on your needs for cost, capabilities, privacy, and whether you need local/offline inference.
 
 **Q: I am getting an error when running the examples. What should I do?**  
 A: Ensure all dependencies are installed correctly and your environment variables are set up properly. If the issue persists, seek help in the Skool community or open an issue on GitHub.

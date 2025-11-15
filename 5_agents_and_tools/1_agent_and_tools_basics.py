@@ -1,11 +1,11 @@
 from dotenv import load_dotenv
-from langchain import hub
-from langchain.agents import (
+from langchain_classic import hub
+from langchain_classic.agents import (
     AgentExecutor,
     create_react_agent,
 )
 from langchain_core.tools import Tool
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_ollama import ChatOllama
 
 # Load environment variables from .env file
 load_dotenv()
@@ -36,7 +36,7 @@ tools = [
 prompt = hub.pull("hwchase17/react")
 
 # Initialize a ChatGoogleGenerativeAI model
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
+llm = ChatOllama(model="gpt-oss:20b", temperature=0)
 
 # Create the ReAct agent using the create_react_agent function
 agent = create_react_agent(

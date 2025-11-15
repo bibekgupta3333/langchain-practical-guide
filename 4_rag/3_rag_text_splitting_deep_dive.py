@@ -1,6 +1,6 @@
 import os
 
-from langchain.text_splitter import (
+from langchain_text_splitters import (
     CharacterTextSplitter,
     RecursiveCharacterTextSplitter,
     TextSplitter,
@@ -9,7 +9,7 @@ from langchain.text_splitter import (
 )
 from langchain_community.document_loaders import TextLoader
 from langchain_chroma import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_ollama import OllamaEmbeddings
 
 # Define the directory containing the text file
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -27,8 +27,8 @@ loader = TextLoader(file_path)
 documents = loader.load()
 
 # Define the embedding model
-embeddings = GoogleGenerativeAIEmbeddings(
-    model="models/embedding-001"
+embeddings = OllamaEmbeddings(
+    model="embeddinggemma"
 )  # Update to a valid embedding model if needed
 
 

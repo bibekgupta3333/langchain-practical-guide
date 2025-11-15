@@ -1,10 +1,10 @@
 import os
 
 from dotenv import load_dotenv
-from langchain.text_splitter import CharacterTextSplitter
+from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_chroma import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
+from langchain_ollama import OllamaEmbeddings, ChatOllama
 
 # Load environment variables from .env
 load_dotenv()
@@ -34,7 +34,7 @@ print(f"Sample chunk:\n{docs[0].page_content}\n")
 
 # Step 3: Create embeddings for the document chunks
 # OpenAIEmbeddings turns text into numerical vectors that capture semantic meaning
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+embeddings = OllamaEmbeddings(model="embeddinggemma")
 
 # Step 4: Create and persist the vector store with the embeddings
 # Chroma stores the embeddings for efficient searching

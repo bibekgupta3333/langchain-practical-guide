@@ -1,9 +1,9 @@
 # Docs: https://python.langchain.com/v0.1/docs/modules/tools/custom_tools/
 
 # Import necessary libraries
-from langchain import hub
-from langchain.agents import AgentExecutor, create_tool_calling_agent
-from langchain.pydantic_v1 import BaseModel, Field
+from langchain_classic import hub
+from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
+from pydantic import BaseModel, Field
 from langchain_core.tools import StructuredTool, Tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 

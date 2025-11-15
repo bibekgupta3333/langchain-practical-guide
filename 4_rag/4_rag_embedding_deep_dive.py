@@ -1,10 +1,10 @@
 import os
 
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.text_splitter import CharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from langchain_chroma import Chroma
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_ollama import OllamaEmbeddings
 
 # Define the directory containing the text file and the persistent directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -46,8 +46,8 @@ def create_vector_store(docs, embeddings, store_name):
 # Uses Google GenerativeAI's embedding models.
 # Useful for general-purpose embeddings with high accuracy.
 print("\n--- Using Google GenerativeAI Embeddings ---")
-google_generative_ai_embeddings = GoogleGenerativeAIEmbeddings(
-    model="models/embedding-001"
+google_generative_ai_embeddings = OllamaEmbeddings(
+    model="embeddinggemma"
 )
 create_vector_store(
     docs, google_generative_ai_embeddings, "chroma_db_google_generative_ai"

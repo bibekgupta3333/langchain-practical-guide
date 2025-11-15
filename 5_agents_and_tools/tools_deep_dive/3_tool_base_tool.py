@@ -5,11 +5,11 @@ import os
 from typing import Type
 
 from dotenv import load_dotenv
-from langchain import hub
-from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain_classic import hub
+from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
 from pydantic import BaseModel, Field
 from langchain_core.tools import BaseTool
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_ollama import ChatOllama
 
 
 load_dotenv()
@@ -73,7 +73,7 @@ tools = [
 ]
 
 # Initialize a ChatGoogleGenerativeAI model
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+llm = ChatOllama(model="gpt-oss:20b")
 
 # Pull the prompt template from the hub
 prompt = hub.pull("hwchase17/openai-tools-agent")

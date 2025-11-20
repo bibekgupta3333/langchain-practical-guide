@@ -672,7 +672,7 @@ description = "Cross-platform colored terminal text."
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 groups = ["main"]
-markers = "platform_system == \"Windows\" or os_name == \"nt\" or sys_platform == \"win32\""
+markers = "os_name == \"nt\" or platform_system == \"Windows\" or sys_platform == \"win32\""
 files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
@@ -2177,14 +2177,14 @@ tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<10.0.0"
 
 [[package]]
 name = "langchain-core"
-version = "1.0.5"
+version = "1.0.7"
 description = "Building applications with LLMs through composability"
 optional = false
 python-versions = "<4.0.0,>=3.10.0"
 groups = ["main"]
 files = [
-    {file = "langchain_core-1.0.5-py3-none-any.whl", hash = "sha256:d24c0cf12cfcd96dd4bd479aa91425f3a6652226cd824228ae422a195067b74e"},
-    {file = "langchain_core-1.0.5.tar.gz", hash = "sha256:7ecbad9a60dde626252733a9c18c7377f4468cfe00465ffa99f5e9c6cb9b82d2"},
+    {file = "langchain_core-1.0.7-py3-none-any.whl", hash = "sha256:76af258b0e95a7915b8e301706a45ded50c75b80ff35329394d4df964416e32a"},
+    {file = "langchain_core-1.0.7.tar.gz", hash = "sha256:6c64399cb0f163a7e45a764cce75d80fd08b82f4e0274ca892cfbcaa2f29200b"},
 ]
 
 [package.dependencies]
@@ -6718,4 +6718,4 @@ cffi = ["cffi (>=1.17,<2.0) ; platform_python_implementation != \"PyPy\" and pyt
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11.0,<3.14.0"
-content-hash = "6e39a2996eab95ac7a4ce1a83e9a4c6d7175e05cafd685613498ab41471987e7"
+content-hash = "bb3b212b09fc8b3b234edf5b7cd18fa81ac8de3f6ebf21989f6b45a5a9d966af"
